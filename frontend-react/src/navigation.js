@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import LandingPage from './landingpage';
-import Dashboard from './dashboard';
-import Annotate from './annotate';
+import LandingPage from './components/landingpage';
+import Dashboard from './components/dashboard';
+import Annotate from './components/annotate';
 
-const Main = () => (
+const Navigation = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={LandingPage} />
@@ -13,7 +13,6 @@ const Main = () => (
             <Route exact path="/annotate" component={Annotate} />
         </Switch>
     </BrowserRouter>
+);
 
-)
-
-export default Main;
+export default Navigation;
