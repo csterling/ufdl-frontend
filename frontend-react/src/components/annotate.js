@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactImageAnnotate from "react-image-annotate";
 import '../style/annotate.css';
 
 // TODO: this needs to be cleaned up
@@ -41,13 +42,25 @@ class Annotate extends Component {
         }
 
         return (
-            <div className="backgroundAll">
+            <div className="border">
                 <form className="selectForm" onSubmit={this._handleSubmit}>
                     <input type="file" id="file" className="fileInputButton" onChange={this._handleImageChange} />
-                    <label for="file" class="fileLabel">Select Image</label>
-                    {/* <button type="submit" onClick={this._handleSubmit}>Upload Image</button> */}
+                    <label htmlFor="file" className="fileLabel">
+                        Select Image
+                    </label>
                 </form>
                 <div className="imageDisplay">
+
+                    {/* Currently has hardcoded images, needs to take in uploaded images */}
+
+                    {/* <ReactImageAnnotate
+                        selectedImage="https://i.imgur.com/SY4z4Cx.jpg"
+                        taskDescription="# Draw region around each Kiwifruit bunch"
+                        images={[{ src: "https://i.imgur.com/SY4z4Cx.jpg", name: "Kiwifruit.png" }]}
+                        regionClsList={["Kiwifruit", "Human Face"]}
+                        enabledTools="create-polygon, create-box"
+                    /> */}
+
                     {$imagePreview}
                 </div>
             </div>

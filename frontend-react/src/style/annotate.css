@@ -1,45 +1,55 @@
-.backgroundAll{
-    background-color: #282828;
-    font-family: Arial, Helvetica, sans-serif;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.border{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-  .fileInputButton{
-    width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-    z-index: -1;
-  }
+.fileInputButton{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
 
-  .fileInputButton + .fileLabel {
-    cursor: pointer;
-      background-image: linear-gradient(#009DFF, #59BFFF);
-      color: #fff;
-      padding:10px;
-      border-radius: 5px;
-    font-size:15px;
-    font-weight: bold;
-  }
+.fileInputButton + .fileLabel {
+  cursor: pointer;
+  background-image: linear-gradient(#009DFF, #59BFFF);
+  color: #fff;
+  padding:10px;
+  border-radius: 5px;
+  font-size:15px;
+  font-weight: bold;
+}
 
-  .fileInputButton:focus + .fileLabel {
-      outline: 1px dotted #000;
-      outline: -webkit-focus-ring-color auto 5px;
-  }
+.fileInputButton:focus + .fileLabel {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
 
-  .imageDisplay {
-    padding-top: 25px;
-  }
+.imageDisplay {
+  margin: 25px;
+  border-style: solid;
+  border-width: 5px;
+  margin: auto;
+  width: 90%;
+  height: 90%;
+}
 
-  .selectForm {
-    padding-top: 25px;
-  }
+/* This is to be used if we are not using the library. Remove it if the library's use if finalised. */
+img {
+  width: auto;
+  height: 100%;
+  max-height: 90vh;
+  /* max-width: 90vh; */ 
+  /* TODO: Need to limit the height so that images can fit in the box
+  But we need to avoid the image being resized */
+}
+
+.selectForm {
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
