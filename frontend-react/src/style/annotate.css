@@ -20,8 +20,10 @@
   background-image: linear-gradient(#009DFF, #59BFFF);
   color: #fff;
   padding:10px;
+  padding-right: 40px;
+  padding-left: 40px;
   border-radius: 5px;
-  font-size:15px;
+  font-size:20px;
   font-weight: bold;
 }
 
@@ -37,6 +39,7 @@
   margin: auto;
   width: 90%;
   height: 90%;
+  margin-top:30px;
 }
 
 /* This is to be used if we are not using the library. Remove it if the library's use if finalised. */
@@ -50,6 +53,9 @@ img {
 }
 
 .selectForm {
-  padding-top: 25px;
-  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+#formUpload {
+  margin-top: 20%;
 }

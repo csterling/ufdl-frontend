@@ -2,70 +2,74 @@ import React, { Component } from 'react';
 import ReactImageAnnotate from "react-image-annotate";
 import '../style/annotate.css';
 
-// TODO: this needs to be cleaned up
 class Annotate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            file: '',
-            imagePreviewUrl: ''
-        };
-        this._handleImageChange = this._handleImageChange.bind(this);
-        this._handleSubmit = this._handleSubmit.bind(this);
-      }
+    // TODO: Allow the annotator to retain the annotation regions and tags upon new image uploads
+    //       Uploading new images currently recreates the annotator and the annotations are cleared
+    state = {
+        data: [],
+        uploaded: false
+    }
 
-      _handleSubmit(e) {
-          e.preventDefault();
-          // TODO: do something with -> this.state.file
-      }
-
-      _handleImageChange(e) {
-          e.preventDefault();
-
-          let reader = new FileReader();
-          let file = e.target.files[0];
-
-          reader.onloadend = () => {
-              this.setState({
-                  file: file,
-                  imagePreviewUrl: reader.result
-              });
-          };
-
-          reader.readAsDataURL(file);
-      }
-    render() {
-        let {imagePreviewUrl} = this.state;
-        let $imagePreview = null;
-        if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
-        }
-
-        return (
-            <div className="border">
-                <form className="selectForm" onSubmit={this._handleSubmit}>
-                    <input type="file" id="file" className="fileInputButton" onChange={this._handleImageChange} />
-                    <label htmlFor="file" className="fileLabel">
-                        Select Image
-                    </label>
-                </form>
-                <div className="imageDisplay">
-
-                    {/* Currently has hardcoded images, needs to take in uploaded images */}
-
-                    {/* <ReactImageAnnotate
-                        selectedImage="https://i.imgur.com/SY4z4Cx.jpg"
-                        taskDescription="# Draw region around each Kiwifruit bunch"
-                        images={[{ src: "https://i.imgur.com/SY4z4Cx.jpg", name: "Kiwifruit.png" }]}
-                        regionClsList={["Kiwifruit", "Human Face"]}
-                        enabledTools="create-polygon, create-box"
-                    /> */}
-
-                    {$imagePreview}
-                </div>
-            </div>
+  fileSelectedHandler = event => {
+    var images = [];
+    let files = event.target.files;
+    var img = new Image();
+    for (let i = 0; i < files.length; i++) {
+        img.src = URL.createObjectURL(files[i]);
+        images.push({
+          src: img.src, 
+          name: files[i].name}
         );
     }
+
+    this.setState({
+      data: this.state.data.concat(images),
+      uploaded: true
+    });
+  }
+
+      render() {
+        let { data, uploaded } = this.state;
+        if(uploaded){
+          return (
+              <div className="border">
+                  <form className="selectForm">
+                    <input type="file" id="file" multiple={true} accept="image/*" className="fileInputButton" onChange={this.fileSelectedHandler} />
+                    <label htmlFor="file" className="fileLabel">
+                      Add Images
+                    </label>
+                  </form>
+                <div className="imageDisplay">
+
+                  <ReactImageAnnotate
+                    images= {data}
+                    key = {data}
+                    regionClsList={["kiwi", "leaf"]}
+                    enabledTools="create-polygon, create-box"
+                    onExit={output => {
+                      console.log(JSON.stringify(output.images));
+                    }}
+                  />
+
+                </div> 
+              </div>
+          );}
+        else {
+            return (
+                <div className="border">
+                  <div className="imageDisplay">
+                    <form className="selectForm" id="formUpload">
+                        <input type="file" id="file" multiple={true} accept="image/*" className="fileInputButton" onChange={this.fileSelectedHandler} />
+                        <label htmlFor="file" className="fileLabel">
+                            Upload Images
+                        </label>
+                    </form>
+
+                  </div>
+                </div>
+            );
+        }
+      }
 }
 
 export default Annotate;
