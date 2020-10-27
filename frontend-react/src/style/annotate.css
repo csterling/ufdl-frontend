@@ -1,4 +1,4 @@
-.border{
+#border{
   position: fixed;
   top: 0;
   left: 0;
@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.fileInputButton{
+#file {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -15,7 +15,7 @@
   z-index: -1;
 }
 
-.fileInputButton + .fileLabel {
+#fileLabel {
   cursor: pointer;
   background-image: linear-gradient(#009DFF, #59BFFF);
   color: #fff;
@@ -27,35 +27,21 @@
   font-weight: bold;
 }
 
-.fileInputButton:focus + .fileLabel {
+#file:focus + #fileLabel {
   outline: 1px dotted #000;
   outline: -webkit-focus-ring-color auto 5px;
 }
 
-.imageDisplay {
-  margin: 25px;
+#imageDisplay {
   border-style: solid;
   border-width: 5px;
   margin: auto;
-  width: 90%;
-  height: 90%;
-  margin-top:30px;
-}
-
-/* This is to be used if we are not using the library. Remove it if the library's use if finalised. */
-img {
-  width: auto;
-  height: 100%;
-  max-height: 90vh;
-  /* max-width: 90vh; */ 
-  /* TODO: Need to limit the height so that images can fit in the box
-  But we need to avoid the image being resized */
-}
-
-.selectForm {
-  margin-top: 20px;
+  width: 95%;
+  height: 95%;
+  margin-top:20px;
 }
 
 #formUpload {
   margin-top: 20%;
+  visibility: visible;
 }

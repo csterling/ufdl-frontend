@@ -5,9 +5,7 @@ import Navigation from './navigation';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Navigation />
-  </React.StrictMode>,
+    <Navigation />,
   document.getElementById('root')
 );
 
