@@ -1,0 +1,164 @@
+body{
+    color: white;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+#dashForm{
+    background-color: #232323;
+    border-radius:8px;
+    padding-top:5px;
+    padding-bottom:20px;
+    width:500px;
+    box-shadow: 5px 5px #141414;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+#dataContainer{
+    margin-bottom: 70px;
+}
+
+.step{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.mainSelect{
+    margin-bottom: 25px;
+}
+
+#startButton{
+    background-image: linear-gradient(#009DFF, #59BFFF);
+    color: #fff;
+    border: none;
+    width:260px;
+    padding:10px;
+    border-radius:5px;
+    font-size:15px;
+    font-weight:bold;
+    cursor: pointer;
+}
+
+#startButton:disabled{
+    background-image: linear-gradient(#dddddd, #dddddd);
+    color: #666666;
+}
+
+#createHead{
+    display: flex;
+    padding-left: 160px;
+}
+
+.formTitle{
+    font-size: 24px;
+    padding-bottom:10px;
+}
+
+#namelbl{
+    color: rgb(240, 240, 240);
+}
+#name{
+    margin-bottom: 20px;
+    width: 160px;
+}
+
+.datasetInputs{
+    width: 168px;
+}
+
+#cancelButton{
+    background-image: linear-gradient(#ff1e00, #ff6459);
+    color: #fff;
+    border: none;
+    width:50px;
+    height: 20px;
+    padding:5px;
+    border-radius:5px;
+    font-size:10px;
+    font-weight:bold;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 60px;
+}
+
+#saveButton{
+    background-image: linear-gradient(#009DFF, #59BFFF);
+    color: #fff;
+    border: none;
+    width:100px;
+    height: 25px;
+    padding:5px;
+    border-radius:5px;
+    font-size:14px;
+    font-weight:bold;
+    cursor: pointer;
+}
+
+#saveButton:disabled{
+    background-image: linear-gradient(#dddddd, #dddddd);
+    color: #666666;
+}
+
+#tags{
+    margin-bottom: 15px;
+}
+
+textarea::placeholder{
+    color: #aca4a4d7;
+}
+
+#licenseContainer{
+    margin-left: -52px;
+    margin-bottom: 20px;
+}
+
+#cProjContainer {
+    margin-left: -75px;
+    margin-bottom: 20;
+}
+
+#optionalContainer{
+    margin-left: 35px;
+}
+
+#descContainer {
+    margin-bottom: -20px;
+}
+
+.dataset{
+    display: inline;
+    float: left;
+    margin: 20px;
+}
+
+label{
+    padding-bottom: 10px;
+}
+
+.userLabel{
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+#dataSelect{
+    margin-left: 80px;
+}
+
+hr{
+    border: none;
+    height: 1px;
+    background: grey;
+}
+
+.createStep{
+    padding-bottom: 5px;
+}
+
+.cSteplabel{
+    display: block;
+    text-align: start;
+    margin-left: 150px;
+    color: rgb(189, 184, 184);
+}
