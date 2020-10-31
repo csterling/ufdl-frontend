@@ -31,6 +31,11 @@ class Dashboard extends Component {
             createSelected:false,
         };
 
+        /* TODO: a check should be performed to ensure a user has
+         * already logged-in and hasn't accidentally navigated to this
+         * page */
+
+        /* Get the teams for the already logged-in user */
         getTeamsForUser().then(result => {if (result.valid) {
             this.setState({
                 availableTeams: result.teams
@@ -43,6 +48,7 @@ class Dashboard extends Component {
             });
         }}).catch(result => (console.error(result)));
 
+        /* Get the licences to show when creating a dataset */
         getLicences().then(result => {if (result.valid) {
             this.setState({
                 availableLicences: result.licences
@@ -55,6 +61,9 @@ class Dashboard extends Component {
         }}).catch(result => (console.error(result)));
     }
 
+    /* When a team has been selected, then store the team object, get
+     * the corresponding projects and allow the user to select a
+     * project */
     teamSelectHandler = (event) =>{
         let team  = JSON.parse(document.getElementById("teamSelect").value);
         this.setState({
@@ -77,6 +86,9 @@ class Dashboard extends Component {
         }}).catch(result => (console.error(result)));
     }
 
+    /* When a project has been selected, then store the project
+     * object, get the corresponding datasets and allow the user to
+     * select a dataset */
     projSelectHandler = (event) =>{
         let project = JSON.parse(document.getElementById("projSelect").value);
         this.setState({
@@ -97,6 +109,7 @@ class Dashboard extends Component {
         }}).catch(result => (console.error(result)));
     }
 
+    /* Store the selected dataset in preparation to be annotated */
     dataSelectHandler = (event) => {
         let dataset = JSON.parse(document.getElementById("dataSelect").value);
         this.setState({
@@ -105,25 +118,35 @@ class Dashboard extends Component {
         });
     }
 
+    /* The create dataset button has been clicked, show the create
+     * dataset view */
     handleCreateClick = (event) => {
         this.setState({
             createSelected:true,
         });
     }
 
+    /* The cancel button has been selected on the create dataset view,
+     * return to the main view */
     handleCancelClick = (event) => {
         this.setState({
             createSelected: false,
         });
     }
 
+    /* The save datset button has been clicked, and a new dataset
+     * needs to be created on the backend using the given inputs*/
     handleSaveClick = (event) => {
+        /* Get all of the input objects and values */
         var datasetName = document.getElementById("name").value;
         var licence = JSON.parse(document.getElementById("licenseSelect").value);
         var project = this.state.selectedProject;
         var description = document.getElementById("description").value;
         var tags = document.getElementById("tags").value;
 
+        /* Create the dataset, update the available datasets in the
+         * inputs, and return to the main view ready to start
+         * annotating */
         createDataset(datasetName, licence, project, description, tags)
             .then(response => {
                 if (response.valid) {
@@ -146,6 +169,8 @@ class Dashboard extends Component {
             .catch(error => (console.error(error.json())));
     }
 
+    /* Check that there is valid input for creating a dataset before
+     * enabling the save button*/
     handleDatasetInput = (event) => {
         var datasetName = document.getElementById("name").value;
         var licence = {};
@@ -160,6 +185,8 @@ class Dashboard extends Component {
         });
     }
 
+    /* Start annotating on teh annotation page with the selected
+     * dataset after the start button has been clicked */
     handleStartClick = (event) => {
         setDatasetInUse(this.state.selectedDataset);
 
@@ -168,6 +195,8 @@ class Dashboard extends Component {
         });
     }
 
+    /* Show the options for teams, projects and datasets, or allow the
+     * user to create a new dataset in a different view */
     render() {
         const createSelected = this.state.createSelected;
 

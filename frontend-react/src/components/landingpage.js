@@ -4,22 +4,23 @@ import '../style/landingpage.css';
 import { checkLoginDetails } from 'ufdl-js-client';
 
 class LandingPage extends Component {
+    /* Check the user's credentials and server details when the login
+     * button is pressed */
     handleClick = (event) => {
-            event.preventDefault();
-            let elements = event.target.elements;
-            checkLoginDetails(elements.formip.value,
-                              elements.formport.value,
-                              elements.formuser.value,
-                              elements.formpass.value)
-                .then(details => {if (details.valid) {this.dashboardPage();}});
+        event.preventDefault();
+        let elements = event.target.elements;
+        checkLoginDetails(elements.formip.value,
+                          elements.formport.value,
+                          elements.formuser.value,
+                          elements.formpass.value)
+            .then(details => {if (details.valid) {
+                this.props.history.push({
+                    pathname: '/dashboard'
+                });
+            }});
     }
 
-    dashboardPage = () => {
-        this.props.history.push({
-            pathname: '/dashboard'
-        });
-    }
-
+    /* Show the login page with input options */
     render(){
         return(
             <div id="content">

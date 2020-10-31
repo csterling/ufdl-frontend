@@ -10,7 +10,8 @@
     "react-dom": "^16.13.1",
     "react-image-annotate": "file:../../ufdl-image-annotator/react-image-annotate/dist",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "ufdl-js-client": "file:../../ufdl-js-client"
   },
   "scripts": {
     "start": "react-scripts start",
