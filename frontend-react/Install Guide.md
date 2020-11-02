@@ -2,7 +2,7 @@
 
 ## Initial Setup
 
-Ensure the latest version of Node and npm are installed [here.] (https://nodejs.org/en/)
+Ensure the latest version of Node and npm are installed [here.](https://nodejs.org/en/)
 
 ## Installing Required Components
 
